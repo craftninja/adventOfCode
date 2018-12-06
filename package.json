@@ -1,0 +1,16 @@
+{
+  "name": "adventOfCode",
+  "version": "1.0.0",
+  "description": "Solutions for 2018 https://adventofcode.com",
+  "main": "index.js",
+  "repository": "https://github.com/craftninja/adventOfCode",
+  "author": "Emily Platzer",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "test": "jasmine"
+  },
+  "dependencies": {
+    "jasmine": "^3.3.1"
+  }
+}
