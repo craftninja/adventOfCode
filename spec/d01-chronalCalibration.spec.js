@@ -13,7 +13,7 @@ describe('chronalCalibration', () => {
   it('returns 2 when given "+1\n-2\n+3"', () => {
     expect(chronalCalibration("+1\n-2\n+3")).toBe(2);
   });
-  it('returns 2 when given "+1\n-2\n+3\n+1"', () => {
+  it('returns 3 when given "+1\n-2\n+3\n+1"', () => {
     expect(chronalCalibration("+1\n-2\n+3\n+1")).toBe(3);
   });
 });
