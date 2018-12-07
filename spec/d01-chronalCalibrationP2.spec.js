@@ -19,4 +19,7 @@ describe('chronalCalibration', () => {
   it('returns 14 when given "+7\n+7\n-2\n-7\n-4"', () => {
     expect(chronalCalibration("+7\n+7\n-2\n-7\n-4")).toBe(14);
   });
+  it('returns 14 when given "+1\n+6\n+7\n-15\n"', () => {
+    expect(chronalCalibration("+1\n+6\n+7\n-15\n")).toBe(0);
+  });
 });
