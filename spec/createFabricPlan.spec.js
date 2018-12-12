@@ -4,6 +4,20 @@
 const createFabricPlan = require('../lib/createFabricPlan');
 
 describe('createFabricPlan', () => {
+  it('returns proper fabric when given "#1 @ 1,3: 4x2"', () => {
+    const order = "#1 @ 1,3: 4x2";
+    let row = []
+    row[1] = 1
+    row[2] = 1
+    row[3] = 1
+    row[4] = 1
+    let expected = []
+    expected[3] = row
+    expected[4] = row
+    const actual = createFabricPlan(order);
+    expect(actual).toEqual(expected);
+  });
+
   it('returns proper fabric when given "#1 @ 1,3: 4x4"', () => {
     const order = "#1 @ 1,3: 4x4";
     let row = []
