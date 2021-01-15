@@ -1,7 +1,7 @@
 // https://adventofcode.com/2018/day/1
 
 
-const chronalCalibration = require('../lib/d01-chronalCalibrationP2');
+const chronalCalibration = require('../../lib/2018/d01-chronalCalibrationP2');
 
 describe('chronalCalibration', () => {
   it('returns 2 when given "+1\n-2\n+3\n+1"', () => {

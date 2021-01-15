@@ -1,7 +1,7 @@
 // https://adventofcode.com/2018/day/3
 
 
-const cuttingDeficits = require('../lib/d03-noMatterHowYouSliceIt');
+const cuttingDeficits = require('../../lib/2018/d03-noMatterHowYouSliceIt');
 
 describe('cuttingDeficits', () => {
   it('returns 0 when given "#1 @ 1,3: 4x4"', () => {

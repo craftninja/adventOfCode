@@ -1,7 +1,7 @@
 // https://adventofcode.com/2018/day/2
 
 
-const inventoryManagementSystem = require('../lib/d02-inventoryManagementSystem');
+const inventoryManagementSystem = require('../../lib/2018/d02-inventoryManagementSystem');
 
 describe('inventoryManagementSystem', () => {
   it('returns 0 when given "abcdef\n"', () => {

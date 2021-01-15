@@ -1,7 +1,7 @@
 // https://adventofcode.com/2018/day/3
 
 
-const noOverlaps = require('../lib/d03-noMatterHowYouSliceItP2');
+const noOverlaps = require('../../lib/2018/d03-noMatterHowYouSliceItP2');
 
 describe('noOverlaps', () => {
   it('returns undefined when given "#1 @ 1,3: 4x4\n#2 @ 1,3: 4x4"', () => {

@@ -1,7 +1,7 @@
 // https://adventofcode.com/2018/day/3
 
 
-const createFabricPlan = require('../lib/createFabricPlan');
+const createFabricPlan = require('../../lib/2018/createFabricPlan');
 
 describe('createFabricPlan', () => {
   it('returns proper fabric when given "#1 @ 1,3: 4x2"', () => {

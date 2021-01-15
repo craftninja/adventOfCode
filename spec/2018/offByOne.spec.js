@@ -1,7 +1,7 @@
 // https://adventofcode.com/2018/day/2
 
 
-const offByOne = require('../lib/offByOne');
+const offByOne = require('../../lib/2018/offByOne');
 
 describe('offByOne', () => {
   it('returns true when given "abcde" and "abdde"', () => {

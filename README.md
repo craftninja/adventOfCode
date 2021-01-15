@@ -9,5 +9,5 @@ yarn test
 ### run a script
 
 ```sh
-node script/scriptName.js
+node script/year/scriptName.js
 ```
