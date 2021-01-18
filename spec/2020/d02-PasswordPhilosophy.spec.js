@@ -1,4 +1,4 @@
-// https://adventofcode.com/2020/day/1
+// https://adventofcode.com/2020/day/2
 
 
 const passwordPhilosophy = require('../../lib/2020/d02-passwordPhilosophy');
