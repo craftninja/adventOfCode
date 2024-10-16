@@ -24,15 +24,15 @@ describe('trebuchet', () => {
   })
 
   describe('can handle multiple lines', () => {
-    xit('returns 50 when given "1abc2\npqr3stu8vwx"', () => {
+    it('returns 50 when given "1abc2\npqr3stu8vwx"', () => {
       const report = "1abc2\npqr3stu8vwx";
       expect(trebuchet(report)).toBe(50);
     });
-    xit('returns 65 when given "1abc2\npqr3stu8vwx\na1b2c3d4e5f"', () => {
+    it('returns 65 when given "1abc2\npqr3stu8vwx\na1b2c3d4e5f"', () => {
       const report = "1abc2\npqr3stu8vwx\na1b2c3d4e5f";
       expect(trebuchet(report)).toBe(65);
     });
-    xit('returns 142 when given "1abc2\npqr3stu8vwx\na1b2c3d4e5f\ntreb7uchet"', () => {
+    it('returns 142 when given "1abc2\npqr3stu8vwx\na1b2c3d4e5f\ntreb7uchet"', () => {
       const report = "1abc2\npqr3stu8vwx\na1b2c3d4e5f\ntreb7uchet";
       expect(trebuchet(report)).toBe(142);
     });
