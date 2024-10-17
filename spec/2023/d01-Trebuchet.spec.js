@@ -37,4 +37,11 @@ describe('trebuchet', () => {
       expect(trebuchet(messedCalibrationValues)).toBe(142);
     });
   })
+
+  describe('can handle empty line at end of input', () => {
+    it('returns 142 when given "1abc2\npqr3stu8vwx\na1b2c3d4e5f\ntreb7uchet\n"', () => {
+      const messedCalibrationValues = "1abc2\npqr3stu8vwx\na1b2c3d4e5f\ntreb7uchet\n";
+      expect(trebuchet(messedCalibrationValues)).toBe(142);
+    })
+  })
 });
