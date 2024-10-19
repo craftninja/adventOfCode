@@ -41,6 +41,14 @@ describe('trebuchet2', () => {
       const messedCalibrationValue = "six23seven";
       expect(trebuchet2(messedCalibrationValue)).toBe(67);
     });
+    it('return 83 when given "eighthree"', () => {
+      const messedCalibrationValue = "eighthree";
+      expect(trebuchet2(messedCalibrationValue)).toBe(83);
+    })
+    it('returns 35 when given "three2fiveonexrllxsvfive"', () => {
+      const messedCalibrationValue = "three2fiveonexrllxsvfive";
+      expect(trebuchet2(messedCalibrationValue)).toBe(35);
+    })
   })
 
   describe('can handle multiple lines', () => {
