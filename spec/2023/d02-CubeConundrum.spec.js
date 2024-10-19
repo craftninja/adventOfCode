@@ -20,5 +20,19 @@ describe('support function', () => {
       expect(bagContents.red).toBe(4)
       expect(bagContents.blue).toBe(3)
     })
+  });
+  describe('parseGameRecords', () => {
+    it('can parse a game record "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green"', () => {
+      const rawGameRecords = "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green";
+      const gameRecords = cubeConundrum.parseGameRecords(rawGameRecords);
+      expect(gameRecords).toEqual({
+        "1": [
+          {"blue": 3, "red": 4},
+          {"red": 1, "green": 2, "blue": 6},
+          {"green": 2}
+        ]
+      })
+
+    })
   })
 })
