@@ -3,7 +3,7 @@
 
 const cubeConundrum = require('../../lib/2023/d02-cubeConundrum');
 
-describe('cubeConundrum', () => {
+describe('cubeConundrum calculateSum', () => {
   describe('can handle one line', () => {
     it('returns 1 when given "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green"', () => {
       const gameRecord = "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green";
