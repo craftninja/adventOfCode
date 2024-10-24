@@ -1,4 +1,4 @@
-// https://adventofcode.com/2023/day/1
+// https://adventofcode.com/2023/day/2
 
 
 const cubeConundrum = require('../../lib/2023/d02-cubeConundrum');
