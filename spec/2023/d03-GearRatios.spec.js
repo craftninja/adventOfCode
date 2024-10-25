@@ -19,14 +19,18 @@ describe('gearRatios sumPartNumbersFromSchematic', () => {
     });
   })
 
-  xdescribe('can handle multiple lines', () => {
+  describe('can handle multiple lines', () => {
     it('returns 4361 when given \n"467..114..\n...*......\n..35..633.\n......#...\n617*......\n.....+.58.\n..592.....\n......755.\n...$.*....\n.664.598.."', () => {
       const engineSchematic = "467..114..\n...*......\n..35..633.\n......#...\n617*......\n.....+.58.\n..592.....\n......755.\n...$.*....\n.664.598..";
       expect(gearRatios.sumPartNumbersFromSchematic(engineSchematic)).toBe(4361);
     });
+    it('returns 1 when given "1..\n@..\n..."', () => {
+      const engineSchematic = "1..\n@..\n..."
+      expect(gearRatios.sumPartNumbersFromSchematic(engineSchematic)).toBe(1)
+    })
   })
 
-  xdescribe('can handle empty line at end of input', () => {
+  describe('can handle empty line at end of input', () => {
     it('returns 4361 when given \n"467..114..\n...*......\n..35..633.\n......#...\n617*......\n.....+.58.\n..592.....\n......755.\n...$.*....\n.664.598.."', () => {
       const engineSchematic = "467..114..\n...*......\n..35..633.\n......#...\n617*......\n.....+.58.\n..592.....\n......755.\n...$.*....\n.664.598..\n";
       expect(gearRatios.sumPartNumbersFromSchematic(engineSchematic)).toBe(4361);
