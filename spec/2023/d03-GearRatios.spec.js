@@ -24,10 +24,10 @@ describe('gearRatios sumPartNumbersFromSchematic', () => {
       const engineSchematic = "467..114..\n...*......\n..35..633.\n......#...\n617*......\n.....+.58.\n..592.....\n......755.\n...$.*....\n.664.598..";
       expect(gearRatios.sumPartNumbersFromSchematic(engineSchematic)).toBe(4361);
     });
-    it('returns 1 when given "1..\n@..\n..."', () => {
-      const engineSchematic = "1..\n@..\n..."
-      expect(gearRatios.sumPartNumbersFromSchematic(engineSchematic)).toBe(1)
-    })
+    it('returns 0 when given \n".*..........6\n..586.5.651.."', () => {
+      const engineSchematic = ".*..........6\n..586.5.651..";
+      expect(gearRatios.sumPartNumbersFromSchematic(engineSchematic)).toBe(586);
+    });
   })
 
   describe('can handle empty line at end of input', () => {
