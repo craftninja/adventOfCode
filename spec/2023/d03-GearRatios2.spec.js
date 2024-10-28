@@ -19,14 +19,14 @@ describe('gearRatios sumGearRatiosFromSchematic', () => {
     });
   })
 
-  xdescribe('can handle multiple lines', () => {
+  describe('can handle multiple lines', () => {
     it('returns 467835 when given \n"467..114..\n...*......\n..35..633.\n......#...\n617*......\n.....+.58.\n..592.....\n......755.\n...$.*....\n.664.598.."', () => {
       const engineSchematic = "467..114..\n...*......\n..35..633.\n......#...\n617*......\n.....+.58.\n..592.....\n......755.\n...$.*....\n.664.598..";
       expect(gearRatios.sumGearRatiosFromSchematic(engineSchematic)).toBe(467835);
     });
   })
 
-  xdescribe('can handle empty line at end of input', () => {
+  describe('can handle empty line at end of input', () => {
     it('returns 467835 when given \n"467..114..\n...*......\n..35..633.\n......#...\n617*......\n.....+.58.\n..592.....\n......755.\n...$.*....\n.664.598..\n"', () => {
       const engineSchematic = "467..114..\n...*......\n..35..633.\n......#...\n617*......\n.....+.58.\n..592.....\n......755.\n...$.*....\n.664.598..\n";
       expect(gearRatios.sumGearRatiosFromSchematic(engineSchematic)).toBe(467835);
@@ -39,15 +39,30 @@ describe('gearRatios sumGearRatiosFromSchematic', () => {
           gearRatios.getPossibleGearsAndPartData("123...")
         ).toEqual([])
       })
+      it('returns no gears when a `*` is not present across two lines', () => {
+        expect(
+          gearRatios.getPossibleGearsAndPartData("123...\n234...")
+        ).toEqual([])
+      })
       it('returns gears with no part numbers when a `*` is not next to any numbers', () => {
         expect(
           gearRatios.getPossibleGearsAndPartData("123.*.")
         ).toEqual([[]])
       })
+      it('returns gears with no part numbers when a `*` is not next to any numbers across two lines', () => {
+        expect(
+          gearRatios.getPossibleGearsAndPartData("123.*.\n456...")
+        ).toEqual([[]])
+      })
+      it('returns a gear and the list of the numbers when a `*` is next to two numbers 4&5', () => {
+        expect(
+          gearRatios.getPossibleGearsAndPartData("4*5\n...")
+        ).toEqual([[4, 5]])
+      })
       it('returns a gear and the list of the numbers when a `*` is next to two numbers', () => {
         expect(
-          gearRatios.getPossibleGearsAndPartData("4*5")
-        ).toEqual([[4, 5]])
+          gearRatios.getPossibleGearsAndPartData("4*...\n..5..")
+        ).toEqual([[4,5]])
       })
       it('returns a gear and the list of the numbers when a `*` is next to two numbers', () => {
         expect(
