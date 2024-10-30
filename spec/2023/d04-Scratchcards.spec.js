@@ -41,7 +41,7 @@ describe('scratchcards sumOfScratchcardPoints', () => {
   describe('support functions', () => {
     describe('sumArray', () => {
       it('can sum an array', () => {
-        expect(scratchcards.sumArray([1,2,3])).toBe(6)
+        expect(scratchcards.sumArrayRemovingNaNs([1,2,3])).toBe(6)
       })
     })
   })
