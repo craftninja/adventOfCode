@@ -4,6 +4,8 @@ const rawDirAndCoordinateMap1 = "RL\n\nAAA = (BBB, CCC)\nBBB = (DDD, EEE)\nCCC =
 
 const rawDirAndCoordinateMap2 = "LLR\n\nAAA = (BBB, BBB)\nBBB = (AAA, ZZZ)\nZZZ = (ZZZ, ZZZ)"
 
+const rawDirAndCoordinateMap3 = "LR\n\n11A = (11B, XXX)\n11B = (XXX, 11Z)\n11Z = (11B, XXX)\n22A = (22B, XXX)\n22B = (22C, 22C)\n22C = (22Z, 22Z)\n22Z = (22B, 22B)\nXXX = (XXX, XXX)"
+
 const hauntedWasteland = require('../../lib/2023/d08-hauntedWasteland');
 
 describe('hauntedWasteland', () => {
@@ -21,6 +23,14 @@ describe('hauntedWasteland', () => {
       expect(hauntedWasteland.calculateStepsToZZZ(rawDirAndCoordinateMap2 + "\n")).toBe(6);
     });
   });
+  describe('calculateStepsToxxZ', () => {
+    it(`returns 6 when given \n"${rawDirAndCoordinateMap3}"`, () => {
+      expect(hauntedWasteland.calculateStepsToxxZ(rawDirAndCoordinateMap3)).toBe(6);
+    });
+    it(`returns 6 when given \n"${rawDirAndCoordinateMap3 + '\n'}"`, () => {
+      expect(hauntedWasteland.calculateStepsToxxZ(rawDirAndCoordinateMap3 + "\n")).toBe(6);
+    });
+  });
 
   describe('support functions', () => {
     describe('followDirectionsCountingSteps', () => {
@@ -34,6 +44,14 @@ describe('hauntedWasteland', () => {
         const dirCoordinateMap2 = hauntedWasteland.parseDirAndCoordinateMap(rawDirAndCoordinateMap2)
         expect(
           hauntedWasteland.followDirectionsCountingSteps(dirCoordinateMap2)
+        ).toBe(6)
+      })
+    })
+    describe('followDirectionsCountingSteps2', () => {
+      it('can return number of steps from a dirCoordinateMap3', () => {
+        const dirCoordinateMap3 = hauntedWasteland.parseDirAndCoordinateMap(rawDirAndCoordinateMap3)
+        expect(
+          hauntedWasteland.followDirectionsCountingSteps2(dirCoordinateMap3)
         ).toBe(6)
       })
     })
