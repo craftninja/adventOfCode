@@ -13,6 +13,14 @@ describe('mirageMaintenance', () => {
       expect(mirageMaintenance.sumExtrapolatedValues(rawOasisData + "\n")).toBe(114);
     });
   });
+  describe('sumBackExtrapolatedValues', () => {
+    it(`returns 2 when looking backwards given \n"${rawOasisData}"`, () => {
+      expect(mirageMaintenance.sumBackExtrapolatedValues(rawOasisData)).toBe(2);
+    });
+    it(`returns 2 when looking backwards given \n"${rawOasisData + '\n'}"`, () => {
+      expect(mirageMaintenance.sumBackExtrapolatedValues(rawOasisData + "\n")).toBe(2);
+    });
+  });
 
   describe('support functions', () => {
     describe('generateSequences', () => {
@@ -24,6 +32,20 @@ describe('mirageMaintenance', () => {
           [0, 3, 6, 9, 12, 15, 18],
           [3, 3, 3, 3, 3, 3],
           [0, 0, 0, 0, 0]
+        ])
+      })
+    })
+    describe('generateBackSequences', () => {
+      it('can return sequences from a single row of oasis data', () => {
+        const rowOfOasisData = [10, 13, 16, 21, 30, 45]
+        expect(
+          mirageMaintenance.generateBackSequences(rowOfOasisData)
+        ).toEqual([
+          [5, 10, 13, 16, 21, 30, 45],
+          [5, 3, 3, 5, 9, 15],
+          [-2, 0, 2, 4, 6],
+          [2, 2, 2, 2],
+          [0, 0, 0],
         ])
       })
     })
