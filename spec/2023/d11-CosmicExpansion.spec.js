@@ -15,6 +15,20 @@ describe('cosmicExpansion', () => {
       expect(cosmicExpansion.sumOfShortestPathsBetweenAllGalaxies(rawCosmicMap + "\n")).toBe(374);
     });
   });
+  describe('sumOfShortestPathsBetweenAllGalaxies2', () => {
+    it(`returns 374 when given \n"${rawCosmicMap}"`, () => {
+      expect(cosmicExpansion.sumOfShortestPathsBetweenAllGalaxies2(rawCosmicMap, 2)).toBe(374);
+    });
+    it(`returns 374 when given \n"${rawCosmicMap + '\n'}"`, () => {
+      expect(cosmicExpansion.sumOfShortestPathsBetweenAllGalaxies2(rawCosmicMap + "\n", 2)).toBe(374);
+    });
+    it(`returns 1030 when given \n"${rawCosmicMap}" with expansion of 10`, () => {
+      expect(cosmicExpansion.sumOfShortestPathsBetweenAllGalaxies2(rawCosmicMap, 10)).toBe(1030);
+    });
+    it(`returns 8410 when given \n"${rawCosmicMap}" with expansion of 100`, () => {
+      expect(cosmicExpansion.sumOfShortestPathsBetweenAllGalaxies2(rawCosmicMap, 100)).toBe(8410);
+    });
+  });
 
   describe('support functions', () => {
     describe('parseMap', () => {
@@ -48,7 +62,28 @@ describe('cosmicExpansion', () => {
       it('returns coordinates of all galaxies', () => {
         expect(
           cosmicExpansion.getGalaxyCoordinates(
-            cosmicExpansion.parseMap(rawCosmicMapExpanded)
+            cosmicExpansion.expandUniverse(
+              cosmicExpansion.parseMap(rawCosmicMap)
+            )
+          )
+        ).toEqual([
+          [0, 4],
+          [1, 9],
+          [2, 0],
+          [5, 8],
+          [6, 1],
+          [7, 12],
+          [10, 9],
+          [11, 0],
+          [11, 5],
+        ])
+      })
+    })
+    describe('getExpandedGalaxyCoordinates', () => {
+      it('returns coordinates of all galaxies with expansion', () => {
+        expect(
+          cosmicExpansion.getExpandedGalaxyCoordinates(
+            cosmicExpansion.parseMap(rawCosmicMap), 2
           )
         ).toEqual([
           [0, 4],
@@ -80,6 +115,18 @@ describe('cosmicExpansion', () => {
           [ 6, 16, 11 ],
           [ 10, 5 ],
           [ 5 ],
+        ])
+      })
+      it('returns distances between galaxies with great distances', () => {
+        expect(
+          cosmicExpansion.getGalaxyDistances([
+            [0, 0],
+            [0, 1_000_001],
+            [1_000_001, 0]
+          ])
+        ).toEqual([
+          [ 1_000_001, 1_000_001 ],
+          [ 2_000_002 ],
         ])
       })
     })
