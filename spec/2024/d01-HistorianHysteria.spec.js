@@ -13,6 +13,14 @@ describe('historianHysteria', () => {
       expect(historianHysteria.sumOfOrderedDifferences(rawLocationIDlist + "\n")).toBe(11);
     });
   });
+  describe('sumOfSimilarityScores', () => {
+    it(`returns 31 when given \n"${rawLocationIDlist}"`, () => {
+      expect(historianHysteria.sumOfSimilarityScores(rawLocationIDlist)).toBe(31);
+    });
+    it(`returns 31 when given \n"${rawLocationIDlist + '\n'}"`, () => {
+      expect(historianHysteria.sumOfSimilarityScores(rawLocationIDlist + "\n")).toBe(31);
+    });
+  });
 
   describe('support functions', () => {
     describe('orderedParsedLists', () => {
@@ -41,6 +49,16 @@ describe('historianHysteria', () => {
             [3, 3, 3, 4, 5, 5],
           ])
         ).toEqual([2, 1, 0, 1, 2, 4])
+      })
+    })
+    describe('getSimilarityScores', () => {
+      it('returns list of diffs from list pair', () => {
+        expect(
+          historianHysteria.getSimilarityScores([
+            [3, 4, 2, 1, 3, 3],
+            [4, 3, 5, 3, 9, 3],
+          ])
+        ).toEqual([9, 4, 0, 0, 9, 9])
       })
     })
     describe('sumArray', () => {
