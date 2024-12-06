@@ -13,6 +13,14 @@ describe('ceresSearch', () => {
       expect(ceresSearch.countXmas(rawCrossword + "\n")).toBe(18);
     });
   });
+  describe('countXofMAS', () => {
+    it(`returns 9 when given \n"${rawCrossword}"`, () => {
+      expect(ceresSearch.countXofMAS(rawCrossword)).toBe(9);
+    });
+    it(`returns 9 when given \n"${rawCrossword + '\n'}"`, () => {
+      expect(ceresSearch.countXofMAS(rawCrossword + "\n")).toBe(9);
+    });
+  });
 
   describe('support functions', () => {
     describe('parseCrossword', () => {
@@ -128,6 +136,68 @@ describe('ceresSearch', () => {
             '.....A....',
             '......M...',
             '.......X..',
+          ])
+        ).toEqual(1)
+      })
+    })
+    describe('findXofMASes', () => {
+      it('finds multiple X of MASs', () => {
+        expect(
+          ceresSearch.findXofMASes([
+            'MMMSXXMASM',
+            'MSAMXMSMSA',
+            'AMXSXMAAMM',
+            'MSAMASMSMX',
+            'XMASAMXAMM',
+            'XXAMMXXAMA',
+            'SMSMSASXSS',
+            'SAXAMASAAA',
+            'MAMMMXMMMM',
+            'MXMXAXMASX',
+          ])
+        ).toEqual(9)
+      })
+      it('finds 0 for no X of MAS', () => {
+        expect(
+          ceresSearch.findXofMASes([
+            '...SAM....',
+          ])
+        ).toEqual(0)
+      })
+      it('finds a X of MAS down down', () => {
+        expect(
+          ceresSearch.findXofMASes([
+            'A.........',
+            '.....M.M..',
+            '......A...',
+            '.....S.S..',
+          ])
+        ).toEqual(1)
+      })
+      it('finds a X of MAS up up', () => {
+        expect(
+          ceresSearch.findXofMASes([
+            'S.S......A',
+            '.A........',
+            'M.M.......',
+          ])
+        ).toEqual(1)
+      })
+      it('finds a X of MAS up down', () => {
+        expect(
+          ceresSearch.findXofMASes([
+            '..S.M.....',
+            '...A......',
+            '..S.M.....',
+          ])
+        ).toEqual(1)
+      })
+      it('finds a X of MAS down up', () => {
+        expect(
+          ceresSearch.findXofMASes([
+            '.......M.S',
+            '........A.',
+            '.......M.S',
           ])
         ).toEqual(1)
       })
