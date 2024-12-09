@@ -14,6 +14,14 @@ describe('printQueue', () => {
       expect(printQueue.sumMiddlePageNumbersOfValidUpdates(rawPrintInstructions + "\n")).toBe(143);
     });
   });
+  describe('sumMiddlePageNumbersOfInvalidUpdates', () => {
+    it(`returns 123 when given \n"${rawPrintInstructions}"`, () => {
+      expect(printQueue.sumMiddlePageNumbersOfInvalidUpdates(rawPrintInstructions)).toBe(123);
+    });
+    it(`returns 123 when given \n"${rawPrintInstructions + '\n'}"`, () => {
+      expect(printQueue.sumMiddlePageNumbersOfInvalidUpdates(rawPrintInstructions + "\n")).toBe(123);
+    });
+  });
 
   describe('support functions', () => {
     describe('parsePrintInstructions', () => {
@@ -73,6 +81,49 @@ describe('printQueue', () => {
             [97,13,75,29,47],
           ],
         })
+      })
+    })
+    describe('reorderIncorrectOrders', () => {
+      it('returns the ordered version of incorrect updates', () => {
+        expect(printQueue.reorderIncorrectOrders({
+          correct: [],
+          incorrect: [
+            [75,97,47,61,53],
+            [61,13,29],
+            [97,13,75,29,47],
+          ]
+        }, {
+          47: [13, 53, 61, 29],
+          97: [13, 29, 47, 53, 61, 75],
+          75: [13, 29, 47, 53, 61],
+          61: [13, 29, 53],
+          29: [13],
+          53: [13, 29],
+        })).toEqual([
+          [97,75,47,61,53],
+          [61,29,13],
+          [97,75,47,29,13],
+        ])
+      })
+      it('returns the ordered version of incorrect updates 2', () => {
+        const reorder = printQueue.reorderIncorrectOrders({
+          correct: [],
+          incorrect: [
+            [97,47,61,53,75],
+            [61,13,29],
+            [97,13,75,29,47],
+          ]
+        }, {
+          47: [13, 53, 61, 29],
+          97: [13, 29, 47, 53, 61, 75],
+          75: [13, 29, 47, 53, 61],
+          61: [13, 29, 53],
+          29: [13],
+          53: [13, 29],
+        })
+        expect(reorder).toContain([97,75,47,61,53])
+        expect(reorder).toContain([61,29,13])
+        expect(reorder).toContain([97,75,47,29,13])
       })
     })
     describe('findMiddlePageNumbers', () => {
